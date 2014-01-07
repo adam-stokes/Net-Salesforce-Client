@@ -35,7 +35,6 @@ sub get {
       $self->ua->get(
         $url->to_string => {Authorization => "Bearer " . $self->access_token}
       );
-    p $tx->req->headers;
     die($tx->error) unless $tx->success;
     return $tx->res->body;
 }
