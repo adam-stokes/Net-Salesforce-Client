@@ -1,6 +1,6 @@
 # NAME
 
-Net::Salesforce::Client - Blah blah blah
+Net::Salesforce::Client - Salesforce.com client utilities
 
 # SYNOPSIS
 
@@ -8,7 +8,7 @@ Net::Salesforce::Client - Blah blah blah
 
 # DESCRIPTION
 
-Net::Salesforce::Client is
+Net::Salesforce::Client is a perl interface to Salesforce.com JSON api.
 
 # AUTHOR
 
