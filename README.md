@@ -10,6 +10,30 @@ Net::Salesforce::Client - Salesforce.com client utilities
 
 Net::Salesforce::Client is a perl interface to Salesforce.com JSON api.
 
+# ATTRIBUTES
+
+## access\_token
+
+Access token received from authenticating with [Net::Salesforce](https://metacpan.org/pod/Net::Salesforce).
+
+## api\_url
+
+Salesforce API url for accessing sobjects
+
+## ua
+
+A [Mojo::UserAgent](https://metacpan.org/pod/Mojo::UserAgent) object.
+
+## json
+
+A [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) object.
+
+# METHODS
+
+## model
+
+Select model namespace you wish to query, e.g. 'Account'
+
 # AUTHOR
 
 Adam Stokes <adamjs@cpan.org>

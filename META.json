@@ -24,6 +24,13 @@
       ]
    },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : "0",
+            "Test::Pod" : "0",
+            "Test::Pod::Coverage" : "0"
+         }
+      },
       "configure" : {
          "requires" : {
             "Module::Build::Tiny" : "0.030"
@@ -36,12 +43,17 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Class::Load" : "0",
+            "Mojo::Base" : "0",
+            "Mojo::JSON" : "0",
+            "Mojo::URL" : "0",
+            "Mojo::UserAgent" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.88"
+            "Test::Mojo" : "0",
+            "Test::More" : "0"
          }
       }
    },
