@@ -36,7 +36,6 @@ has 'ua' => sub {
 sub sobjects {
     my $self = shift;
     my $tx   = $self->get($self->api_url->path("sobjects"));
-    die("Cannot pull sobjects resource: " . $tx->error) unless $tx->success;
     return $tx;
 }
 
