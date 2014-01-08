@@ -31,11 +31,14 @@ has 'ua' => sub {
 
 sub get {
     my ($self, $url) = @_;
+    p $url->to_string;
     my $tx =
       $self->ua->get(
         $url->to_string => {Authorization => "Bearer " . $self->access_token}
       );
-    die($tx->error) unless $tx->success;
+    p $tx;
+    p $tx->res;
+    die("Problem with api: ".$tx->error) unless $tx->success;
     return $tx->res->body;
 }
 
