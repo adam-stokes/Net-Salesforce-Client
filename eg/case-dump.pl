@@ -5,11 +5,15 @@ use Net::Salesforce;
 use Net::Salesforce::Client;
 use DDP;
 
-my $sf = Net::Salesforce->new(key => $ENV{SFKEY}, secret => $ENV{SFSECRET});
-$sf->authenticate;
-$sf->refresh;
+my $sf = Net::Salesforce->new(
+    key          => $ENV{SFKEY},
+    secret       => $ENV{SFSECRET},
+    callback_uri => 'https://localhost:8081/callback'
+);
 
-my $c = Net::Salesforce::Client->new(access_token => $ENV{SFACCESS_TOKEN});
+my $access_token = $sf->refresh($ENV{SFREFRESH_TOKEN})->{access_token};
+
+my $c = Net::Salesforce::Client->new(access_token => $access_token);
 
 p $c->sobjects;
 
