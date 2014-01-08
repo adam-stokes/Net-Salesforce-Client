@@ -5,7 +5,6 @@ use Mojo::UserAgent;
 use Mojo::JSON;
 use Mojo::URL;
 use Class::Load ':all';
-use DDP;
 
 our $VERSION = '0.01';
 
@@ -13,13 +12,7 @@ has 'access_token';
 
 has 'api_version' => 'v27.0';
 
-has 'api_url' => sub {
-    my $self = shift;
-    return Mojo::URL->new(
-        sprintf('https://na15.salesforce.com/services/data/%s/',
-            $self->api_version)
-    );
-};
+has 'api_host' => 'https://na15.salesforce.com/';
 
 has 'json' => sub {
     my $self = shift;
@@ -33,8 +26,18 @@ has 'ua' => sub {
     return $ua;
 };
 
+sub api_url {
+    my $self = shift;
+    my $url = Mojo::URL->new($self->api_host);
+    # Construct to URL to resemble
+    # https://na15.salesforce.com/services/data/v27.0/sobjects/Account/001200000fdsaj
+    return $url->path('services/data/')->path($self->api_version.'/');
+}
+
 sub sobjects {
     my $self = shift;
+    # Constructs sobjects url
+    # https://na15.salesforce.com/services/data/v27.0/sobjects
     my $tx   = $self->get($self->api_url->path("sobjects"));
     return $tx;
 }
@@ -83,9 +86,11 @@ Access token received from authenticating with L<Net::Salesforce>.
 
 Current supported API version from Salesforce
 
-=head2 api_url
+=head2 api_host
 
-Salesforce API url for accessing sobjects
+Salesforce domain where your application lives, e.g. Developer force usually uses
+
+  https://na17.salesforce.com/
 
 =head2 ua
 
@@ -96,6 +101,10 @@ A L<Mojo::UserAgent> object.
 A L<Mojo::JSON> object.
 
 =head1 METHODS
+
+=head2 api_url
+
+Salesforce API url for accessing sobjects
 
 =head2 model
 

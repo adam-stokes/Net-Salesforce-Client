@@ -20,9 +20,11 @@ Access token received from authenticating with [Net::Salesforce](https://metacpa
 
 Current supported API version from Salesforce
 
-## api\_url
+## api\_host
 
-Salesforce API url for accessing sobjects
+Salesforce domain where your application lives, e.g. Developer force usually uses
+
+    https://na17.salesforce.com/
 
 ## ua
 
@@ -33,6 +35,10 @@ A [Mojo::UserAgent](https://metacpan.org/pod/Mojo::UserAgent) object.
 A [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) object.
 
 # METHODS
+
+## api\_url
+
+Salesforce API url for accessing sobjects
 
 ## model
 
