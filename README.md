@@ -46,6 +46,13 @@ Retrieve list of available sobjects
 
 Perform authenticated requests against Salesforce API
 
+# INSTALL
+
+    $ cpanm git://github.com/battlemidget/Net-Salesforce-Client.git
+
+If you'd wish to try out the latest code base you can do so with above
+command.
+
 # AUTHOR
 
 Adam Stokes <adamjs@cpan.org>

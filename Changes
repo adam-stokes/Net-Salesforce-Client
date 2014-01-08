@@ -1,6 +1,8 @@
 Revision history for Net-Salesforce-Client
 
 {{$NEXT}}
+
+0.01  2014-01-08 00:41:24 EST
 	- Account model added
 	- Capture list of exposed sobjects
         - Initial release
