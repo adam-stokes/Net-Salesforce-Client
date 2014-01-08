@@ -112,7 +112,10 @@ Perform authenticated requests against Salesforce API
 
 =head1 INSTALL
 
-  $ cpanm https://github.com/battlemidget/Net-Salesforce-Client.git
+  $ cpanm git://github.com/battlemidget/Net-Salesforce-Client.git
+
+If you'd wish to try out the latest code base you can do so with above
+command.
 
 =head1 AUTHOR
 
