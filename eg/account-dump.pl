@@ -25,3 +25,4 @@ my $tx =
   $c->model('Account')->by_account_number($ENV{CUS_ACCOUNT_NUMBER});
 
 p $tx->name;
+p $tx->created_date;
