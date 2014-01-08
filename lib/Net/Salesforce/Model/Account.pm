@@ -4,18 +4,67 @@ use Mojo::Base 'Net::Salesforce::Client';
 use Mojo::URL;
 use DDP;
 
-has 'sobject' => 'Account';
+has 'sobject' => sub {
+  my $self = shift;
+  return $self->api_url->path('sobjects/Account/');
+};
+
+has 'account';
 
 sub by_account_number {
     my ($self, $account_number) = @_;
-    my $url = $self->api_url->path($self->sobject . "/$account_number");
-    my $res = $self->get($url);
-    return $self->json->decode($res);
+    my $url = $self->sobject->path($account_number);
+    $self->account($self->get($url));
 }
 
 sub by_name {
     my ($self, $name) = @_;
     "by_name() not implemented yet.";
+}
+
+sub name {
+    my $self = shift;
+    return $self->account->{Name};
+}
+
+sub revenue {
+    my $self = shift;
+    return $self->account->{AnnualRevenue};
+}
+
+sub created_by_id {
+    my $self = shift;
+    return $self->account->{CreatedById};
+}
+
+sub created_date {
+    my $self = shift;
+    return $self->account->{CreatedDate};
+}
+
+sub description {
+    my $self = shift;
+    return $self->account->{Description};
+}
+
+sub owner_id {
+    my $self = shift;
+    return $self->account->{OwnerId};
+}
+
+sub phone {
+    my $self = shift;
+    return $self->account->{Phone};
+}
+
+sub ticker_symbol {
+    my $self = shift;
+    return $self->account->{TickerSymbol};
+}
+
+sub website {
+    my $self = shift;
+    return $self->account->{Website};
 }
 
 1;
@@ -55,13 +104,29 @@ must be made before accessing any attributes.
 Searches the Account namespace by name, this is a query call that
 must be made before accessing any attributes.
 
-=head1 ATTRIBUTES
-
 =head2 name
 
-=head2 assets
+=head2 created_by_id
 
-=head2 cases
+=head2 created_date
+
+=head2 description
+
+=head2 owner_id
+
+=head2 phone
+
+=head2 revenue
+
+=head2 ticker_symbol
+
+=head2 website
+
+=head1 ATTRIBUTES
+
+=head2 account
+
+=head2 sobject
 
 =head1 AUTHOR
 

@@ -1,4 +1,6 @@
 Revision history for Net-Salesforce-Client
 
 {{$NEXT}}
+	- Account model added
+	- Capture list of exposed sobjects
         - Initial release

@@ -11,10 +11,14 @@ our $VERSION = '0.01';
 
 has 'access_token';
 
+has 'api_version' => 'v27.0';
+
 has 'api_url' => sub {
     my $self = shift;
     return Mojo::URL->new(
-        'https://na15.salesforce.com/services/data/v27.0/sobjects');
+        sprintf('https://na15.salesforce.com/services/data/%s/',
+            $self->api_version)
+    );
 };
 
 has 'json' => sub {
@@ -29,18 +33,22 @@ has 'ua' => sub {
     return $ua;
 };
 
+sub sobjects {
+    my $self = shift;
+    my $tx   = $self->get($self->api_url->path("sobjects"));
+    die("Cannot pull sobjects resource: " . $tx->error) unless $tx->success;
+    return $tx;
+}
+
 sub get {
     my ($self, $url) = @_;
-    p $url->to_string;
     my $tx =
       $self->ua->get(
         $url->to_string => {Authorization => "Bearer " . $self->access_token}
       );
-    p $tx;
-    p $tx->res;
-    die("Problem with api: ".$tx->error) unless $tx->success;
-    return $tx->res->body;
+    return $self->json->decode($tx->res->body);
 }
+
 
 sub model {
     my ($self, $class) = @_;
@@ -72,6 +80,10 @@ Net::Salesforce::Client is a perl interface to Salesforce.com JSON api.
 
 Access token received from authenticating with L<Net::Salesforce>.
 
+=head2 api_version
+
+Current supported API version from Salesforce
+
 =head2 api_url
 
 Salesforce API url for accessing sobjects
@@ -89,6 +101,18 @@ A L<Mojo::JSON> object.
 =head2 model
 
 Select model namespace you wish to query, e.g. 'Account'
+
+=head2 sobjects
+
+Retrieve list of available sobjects
+
+=head2 get
+
+Perform authenticated requests against Salesforce API
+
+=head1 INSTALL
+
+  $ cpanm https://github.com/battlemidget/Net-Salesforce-Client.git
 
 =head1 AUTHOR
 

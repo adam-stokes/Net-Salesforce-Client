@@ -16,6 +16,10 @@ Net::Salesforce::Client is a perl interface to Salesforce.com JSON api.
 
 Access token received from authenticating with [Net::Salesforce](https://metacpan.org/pod/Net::Salesforce).
 
+## api\_version
+
+Current supported API version from Salesforce
+
 ## api\_url
 
 Salesforce API url for accessing sobjects
@@ -33,6 +37,14 @@ A [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) object.
 ## model
 
 Select model namespace you wish to query, e.g. 'Account'
+
+## sobjects
+
+Retrieve list of available sobjects
+
+## get
+
+Perform authenticated requests against Salesforce API
 
 # AUTHOR
 
