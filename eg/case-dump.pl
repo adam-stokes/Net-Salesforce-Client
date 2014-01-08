@@ -6,7 +6,7 @@ use DDP;
 
 my $c = Net::Salesforce::Client->new(access_token => $ENV{SFACCESS_TOKEN});
 
-my $account =
-  $c->model('Account')->by_account_number($ENV{CUS_ACCOUNT_NUMBER});
+my $case =
+  $c->model('Case')->by_case_number('500i00000014iP0');
 
-p $account;
+p $case->{case};

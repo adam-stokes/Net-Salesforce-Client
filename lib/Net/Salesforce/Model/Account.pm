@@ -2,7 +2,6 @@ package Net::Salesforce::Model::Account;
 
 use Mojo::Base 'Net::Salesforce::Client';
 use Mojo::URL;
-use DDP;
 
 has 'sobject' => sub {
   my $self = shift;
@@ -14,6 +13,7 @@ has 'account';
 sub by_account_number {
     my ($self, $account_number) = @_;
     my $url = $self->sobject->path($account_number);
+    my $tx = $self->get($url);
     $self->account($self->get($url));
 }
 
@@ -74,15 +74,18 @@ __END__
 
 =head1 NAME
 
-Net::Salesforce::Client - Salesforce.com client utilities
+Net::Salesforce::Model::Account - Salesforce.com Account model
 
 =head1 SYNOPSIS
 
   use Net::Salesforce::Client;
+  my $account = $c->model('Account');
+
+  say $account->description;
 
 =head1 DESCRIPTION
 
-Net::Salesforce::Client is a perl interface to Salesforce.com JSON api.
+Net::Salesforce::Model::Account is a perl interface to Salesforce.com Accounts api.
 
 =head1 METHODS
 
