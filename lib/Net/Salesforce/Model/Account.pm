@@ -13,7 +13,6 @@ has 'account';
 sub by_account_number {
     my ($self, $account_number) = @_;
     my $url = $self->sobject->path($account_number);
-    my $tx = $self->get($url);
     $self->account($self->get($url));
 }
 

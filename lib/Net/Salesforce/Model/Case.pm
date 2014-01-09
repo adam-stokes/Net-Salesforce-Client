@@ -4,8 +4,8 @@ use Mojo::Base 'Net::Salesforce::Client';
 use Mojo::URL;
 
 has 'sobject' => sub {
-  my $self = shift;
-  return $self->api_url->path('sobjects/Case/');
+    my $self = shift;
+    return $self->api_url->path('sobjects/Case/');
 };
 
 has 'case';
@@ -15,6 +15,73 @@ sub by_case_number {
     my $url = $self->sobject->path($case_number);
     $self->case($self->get($url));
 }
+
+sub subject {
+    my $self = shift;
+    return $self->case->{Subject};
+}
+
+sub description {
+    my $self = shift;
+    return $self->case->{Description};
+}
+
+sub status {
+    my $self = shift;
+    return $self->case->{Status};
+}
+
+sub priority {
+    my $self = shift;
+    return $self->case->{Priority};
+}
+
+sub account_id {
+    my $self = shift;
+    return $self->case->{AccountId};
+}
+
+sub asset_id {
+    my $self = shift;
+    return $self->case->{AssetId};
+}
+
+sub created_date {
+    my $self = shift;
+    return $self->case->{CreatedDate};
+}
+
+sub created_by_id {
+    my $self = shift;
+    return $self->case->{CreatedById};
+}
+
+sub is_closed {
+    my $self = shift;
+    return $self->case->{IsClosed};
+}
+
+sub is_escalated {
+    my $self = shift;
+    return $self->case->{IsEscalated};
+}
+
+sub last_modified {
+    my $self = shift;
+    return $self->case->{LastModifiedDate};
+}
+
+sub type {
+    my $self = shift;
+    return $self->case->{Type};
+}
+
+sub owner_id {
+    my $self = shift;
+    return $self->case->{OwnerId};
+}
+
+
 
 1;
 __END__
@@ -44,13 +111,31 @@ Net::Salesforce::Model::Case is a perl interface to Salesforce.com case api.
 Searches the Case namespace by case number, this is a query call that
 must be made before accessing any attributes.
 
+=head2 account_id
+
+=head2 asset_id
+
 =head2 created_by_id
 
 =head2 created_date
 
 =head2 description
 
+=head2 is_closed
+
+=head2 is_escalated
+
+=head2 last_modified
+
 =head2 owner_id
+
+=head2 priority
+
+=head2 status
+
+=head2 subject
+
+=head2 type
 
 =head1 ATTRIBUTES
 
