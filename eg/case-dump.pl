@@ -5,19 +5,26 @@ use Net::Salesforce;
 use Net::Salesforce::Client;
 use DDP;
 
+my $api_host = 'https://cs7.salesforce.com/';
+
+# Authenticate and grab a access_token
 my $sf = Net::Salesforce->new(
-    key          => $ENV{SFKEY},
-    secret       => $ENV{SFSECRET},
-    callback_uri => 'https://localhost:8081/callback'
+    'key'          => $ENV{SFKEY},
+    'secret'       => $ENV{SFSECRET},
+    'redirect_uri' => 'https://localhost:8081/callback',
+    'api_host'     => $api_host,
 );
 
 my $access_token = $sf->refresh($ENV{SFREFRESH_TOKEN})->{access_token};
 
-my $c = Net::Salesforce::Client->new(access_token => $access_token);
+p $access_token;
 
-p $c->sobjects;
+my $c = Net::Salesforce::Client->new(
+    'access_token' => $access_token,
+    'api_host'     => $api_host
+);
 
-my $case =
-  $c->model('Case')->by_case_number('500i00000014iP0');
+my $tx = $c->model('Case')->by_case_number($ENV{SF_CASE_NUMBER});
 
-p $case->{case};
+p $tx->subject;
+
