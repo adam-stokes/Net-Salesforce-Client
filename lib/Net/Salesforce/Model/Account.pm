@@ -67,6 +67,12 @@ sub website {
     return $self->account->{Website};
 }
 
+sub rating {
+    my $self = shift;
+    return $self->account->{Rating};
+}
+
+
 1;
 __END__
 
@@ -107,17 +113,19 @@ must be made before accessing any attributes.
 Searches the Account namespace by name, this is a query call that
 must be made before accessing any attributes.
 
-=head2 name
-
 =head2 created_by_id
 
 =head2 created_date
 
 =head2 description
 
+=head2 name
+
 =head2 owner_id
 
 =head2 phone
+
+=head2 rating
 
 =head2 revenue
 
