@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Net-salesforce-client by battlemidget</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Net-salesforce-client</h1>
+        <p>Perl interface to Salesforce.com JSON api</p>
+
+        <p class="view"><a href="https://github.com/battlemidget/Net-Salesforce-Client">View the Project on GitHub <small>battlemidget/Net-Salesforce-Client</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/battlemidget/Net-Salesforce-Client/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/battlemidget/Net-Salesforce-Client/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/battlemidget/Net-Salesforce-Client">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="name" class="anchor" href="#name"><span class="octicon octicon-link"></span></a>NAME</h1>
+
+<p>Net::Salesforce::Client - Salesforce.com client utilities</p>
+
+<h1>
+<a name="synopsis" class="anchor" href="#synopsis"><span class="octicon octicon-link"></span></a>SYNOPSIS</h1>
+
+<pre><code>use Net::Salesforce::Client;
+</code></pre>
+
+<h1>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>DESCRIPTION</h1>
+
+<p>Net::Salesforce::Client is a perl interface to Salesforce.com JSON api.</p>
+
+<h1>
+<a name="attributes" class="anchor" href="#attributes"><span class="octicon octicon-link"></span></a>ATTRIBUTES</h1>
+
+<h2>
+<a name="access_token" class="anchor" href="#access_token"><span class="octicon octicon-link"></span></a>access_token</h2>
+
+<p>Access token received from authenticating with <a href="https://metacpan.org/pod/Net::Salesforce">Net::Salesforce</a>.</p>
+
+<h2>
+<a name="api_version" class="anchor" href="#api_version"><span class="octicon octicon-link"></span></a>api_version</h2>
+
+<p>Current supported API version from Salesforce</p>
+
+<h2>
+<a name="api_host" class="anchor" href="#api_host"><span class="octicon octicon-link"></span></a>api_host</h2>
+
+<p>Salesforce domain where your application lives, e.g. Developer force usually uses</p>
+
+<pre><code>https://na17.salesforce.com/
+</code></pre>
+
+<h2>
+<a name="ua" class="anchor" href="#ua"><span class="octicon octicon-link"></span></a>ua</h2>
+
+<p>A <a href="https://metacpan.org/pod/Mojo::UserAgent">Mojo::UserAgent</a> object.</p>
+
+<h2>
+<a name="json" class="anchor" href="#json"><span class="octicon octicon-link"></span></a>json</h2>
+
+<p>A <a href="https://metacpan.org/pod/Mojo::JSON">Mojo::JSON</a> object.</p>
+
+<h1>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>METHODS</h1>
+
+<h2>
+<a name="api_url" class="anchor" href="#api_url"><span class="octicon octicon-link"></span></a>api_url</h2>
+
+<p>Salesforce API url for accessing sobjects</p>
+
+<h2>
+<a name="model" class="anchor" href="#model"><span class="octicon octicon-link"></span></a>model</h2>
+
+<p>Select model namespace you wish to query, e.g. 'Account'</p>
+
+<h2>
+<a name="sobjects" class="anchor" href="#sobjects"><span class="octicon octicon-link"></span></a>sobjects</h2>
+
+<p>Retrieve list of available sobjects</p>
+
+<h2>
+<a name="get" class="anchor" href="#get"><span class="octicon octicon-link"></span></a>get</h2>
+
+<p>Perform authenticated requests against Salesforce API</p>
+
+<h1>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>INSTALL</h1>
+
+<pre><code>$ cpanm git://github.com/battlemidget/Net-Salesforce-Client.git
+</code></pre>
+
+<p>If you'd wish to try out the latest code base you can do so with above
+command.</p>
+
+<h1>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>AUTHOR</h1>
+
+<p>Adam Stokes <a href="mailto:adamjs@cpan.org">adamjs@cpan.org</a></p>
+
+<h1>
+<a name="copyright" class="anchor" href="#copyright"><span class="octicon octicon-link"></span></a>COPYRIGHT</h1>
+
+<p>Copyright 2014- Adam Stokes</p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>LICENSE</h1>
+
+<p>This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</p>
+
+<h1>
+<a name="see-also" class="anchor" href="#see-also"><span class="octicon octicon-link"></span></a>SEE ALSO</h1>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/battlemidget">battlemidget</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
