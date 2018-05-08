@@ -2,7 +2,7 @@ package Net::Salesforce::Client;
 
 use Mojo::Base -base;
 use Mojo::UserAgent;
-use Mojo::JSON;
+use Mojo::JSON qw(decode_json encode_json);;
 use Mojo::URL;
 use Class::Load ':all';
 
@@ -14,15 +14,14 @@ has 'api_version' => 'v27.0';
 
 has 'api_host' => 'https://na15.salesforce.com/';
 
-has 'json' => sub {
-    my $self = shift;
-    return Mojo::JSON->new;
-};
-
 has 'ua' => sub {
     my $self = shift;
     my $ua   = Mojo::UserAgent->new;
     $ua->transactor->name("Net::Salesforce/$VERSION");
+    $ua->on(start => sub {
+        my ($ua, $tx) = @_;
+        $tx->req->headers->authorization('Bearer ' . $self->access_token);
+    });
     return $ua;
 };
 
@@ -46,11 +45,19 @@ sub get {
     my ($self, $url) = @_;
     my $tx =
       $self->ua->get(
-        $url->to_string => {Authorization => "Bearer " . $self->access_token}
+        $url->to_string
       );
-    return $self->json->decode($tx->res->body);
+    return decode_json($tx->res->body);
 }
 
+sub post {
+    my ($self, $url, $body) = @_;
+
+    my $tx = $self->ua->post(
+      $url->to_string => {Accept => '*/*'} => json => $body
+    );
+    return decode_json($tx->res->body);
+}
 
 sub model {
     my ($self, $class) = @_;
